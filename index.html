@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Task Overview Manager</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-links" id="navbar-links">
+            <a href="#home">Home</a>
+            <a href="#stats">Stats</a>
+            <a href="#inventory">Inventory</a>
+            <a href="#notes">Notes</a>
+        </div>
+
+        <div>
+            <button id="exportButton">Export</button>
+            <button id="importButton">Import</button>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round">
+                        <div class="circle">
+                            <span id="lightIcon" class="fas fa-sun"></span>
+                            <span id="darkIcon" class="fas fa-moon"></span>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Task Overview Manager</h1>
+        <input id="taskInput" type="text" placeholder="New task">
+        <button id="addButton">Add Task</button> <br>
+
+        <h2>Active Tasks</h2>
+        <table id="activeTasks"></table>
+
+        <h2>Completed Tasks</h2>
+        <table id="completedTasks"></table>
+    </div>
+
+    <script src="scripts/tasks.js"></script>
+    <script src="scripts/buttons.js"></script>
+</body>
+
+</html>

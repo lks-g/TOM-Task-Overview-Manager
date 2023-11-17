@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+:root {
+    --light-bg-color: #d6d6d6;
+    --dark-bg-color: #131313;
+    --font-color: #333;
+    --circle-color: #fff;
+    --navbar-bg-color: #333;
+    --navbar-font-color: #f4f4f4;
+    --button-bg-color: #333;
+    --button-font-color: #f4f4f4;
+    --bg-color: #f0f0f0;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+/****************** TAG *****************/
+
+body {
+    font-family: 'Rubik Mono One', monospace;
+    margin: 0;
+    padding: 0;
+    --bg-color: var(--light-bg-color);
+    color: var(--font-color);
+    transition: all 0.5s ease;
+}
+
+body.dark-mode {
+    margin: 0;
+    padding: 0;
+    --font-color: #272525;
+    --circle-color: #333;
+    --navbar-bg-color: #272525;
+    --navbar-font-color: #f4f4f4;
+    --button-bg-color: #f4f4f4;
+    --button-font-color: #272525;
+    --bg-color: var(--dark-bg-color);
+    --shadow-color: rgba(255, 255, 255, 0.2);
+}
+
+h2 {
+    margin-top: 5%;
+    text-shadow: 0 0 3px var(--shadow-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    text-align: center;
+    font-size: 18px;
+    margin: 0 auto;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    background-color: var(--button-bg-color);
+    color: var(--button-font-color);
+    border-radius: 15px;
+    text-shadow: 0 0 5px var(--shadow-color);
+}
+
+td {
+    word-break: break-word;
+    max-width: 200px;
+}
+
+td[data-tooltip]:hover:after {
+    content: attr(title);
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 1;
+}
+
+/****************** CLASS ***************/
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: var(--navbar-bg-color);
+    color: var(--navbar-font-color);
+    transition: all 0.5s ease;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.4);
+}
+
+.navbar>div {
+    display: flex;
+    align-items: center;
+}
+
+.navbar>div>button {
+    margin-left: 10px;
+    margin-right: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.navbar a {
+    color: var(--navbar-font-color);
+    text-decoration: none;
+    position: relative;
+    padding: 10px;
+    margin-left: 2%;
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar a:hover {
+    transform: scale(1.1);
+}
+
+.navbar a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--navbar-font-color);
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.navbar a:hover::before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+/****************** SWITCH **************/
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+    margin-left: auto;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.theme-switch .circle {
+    background-color: var(--circle-color);
+    bottom: 4px;
+    left: 2px;
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    transition: .4s;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-switch .fas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.theme-switch #lightIcon {
+    color: #333;
+}
+
+.theme-switch #darkIcon {
+    opacity: 0;
+    color: #f4f4f4;
+}
+
+.theme-switch input:checked~.slider .circle {
+    transform: translateX(28px);
+}
+
+.theme-switch input:checked~.slider #lightIcon {
+    opacity: 0;
+}
+
+.theme-switch input:checked~.slider #darkIcon {
+    opacity: 1;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+
+input:checked+.slider {
+    background-color: #66bb6a;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.container {
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 35px;
+    border-radius: 15px;
+    background-color: var(--bg-color);
+    box-shadow: 0 15px 15px var(--shadow-color);
+}
+
+.container button {
+    margin-left: 28px;
+}
+
+.dark-mode {
+    background-color: #333;
+    color: #f2f2f2;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 18px;
+    font-family: 'Rubik Mono One', monospace;
+    border: 1px solid grey;
+    float: left;
+    width: 50%;
+    border: none;
+    background-color: var(--button-bg-color);
+    color: var(--circle-color);
+    border-radius: 12px;
+    box-shadow: 0 0 20px var(--shadow-color);
+    transition: transform 300ms ease-in-out;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    transform: scale(1.1);
+}
+
+button {
+    padding: 10px;
+    color: var(--button-font-color);
+    font-family: 'Rubik Mono One', monospace;
+    cursor: pointer;
+    border-radius: 15px;
+    margin-left: 15px;
+    background-color: var(--button-bg-color);
+    box-shadow: 0 0 30px var(--shadow-color);
+    border: 2px solid var(--button-bg-color);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-font-color);
+    color: var(--button-bg-color);
+    transform: scale(1.1);
+}
+
+/****************** ID ******************/
+
+#addTask {
+    background-color: var(--button-bg-color);
+    color: var(--button-font-color);
+    border: 4px solid var(--button-bg-color);
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+#addTask:hover {
+    background-color: var(--button-font-color);
+    color: var(--button-bg-color);
+    border: 2px solid var(--button-bg-color);
+}
+
+#exportButton,
+#importButton {
+    text-decoration: none;
+    float: left;
+    background-color: #f4f4f4;
+    color: #333;
+    font-size: 18px;
+    margin-left: 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+#exportButton:hover,
+#importButton:hover {
+    transform: scale(1.1);
+}
+
+#completedTasks th,
+#completedTasks td {
+    background-color: lightgreen;
+    color: #333;
+}
+
+#progressBarContainer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#progressBar {
+    width: 100%;
+}
+
+#progressText {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/****************** MEDIA ***************/
+
+@media (max-width: 600px) {
+
+    th,
+    td {
+        padding: 10px;
+    }
+
+    button,
+    #exportButton,
+    #importButton {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    button,
+    #exportButton,
+    #importButton {
+        font-size: 10px;
+    }
+}
