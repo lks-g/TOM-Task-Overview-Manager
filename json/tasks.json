@@ -1,0 +1,24 @@
+{
+    "activeTasks": [
+        {
+            "name": "Drink water",
+            "completed": false
+        },
+        {
+            "name": "ADD MORE FEATURES",
+            "completed": false
+        }
+    ],
+    "completedTasks": [
+        {
+            "name": "UPLOAD T.O.M. TO GITHUB",
+            "completed": false,
+            "completedDate": "2024-02-04T20:24:42.446Z"
+        },
+        {
+            "name": "TAKE A BREAK",
+            "completed": false,
+            "completedDate": "2024-02-04T20:25:12.628Z"
+        }
+    ]
+}
